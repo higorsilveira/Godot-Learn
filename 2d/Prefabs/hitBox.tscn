@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 2 )
+
+[node name="hitBox" type="Area2D"]
+collision_layer = 64
+
+[node name="collision" type="CollisionShape2D" parent="."]
+modulate = Color( 0.00392157, 1, 0.160784, 1 )
+shape = SubResource( 1 )
