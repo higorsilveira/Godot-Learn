@@ -10,7 +10,7 @@ var player_health = 3
 var max_health = 3
 var hurted = false
 var knockback_dir = 1
-var knockback_force = 600
+var knockback_force = 1000
 onready var raycasts = $raycasts
 
 signal change_life(player_life)
@@ -58,6 +58,7 @@ func _check_is_ground():
 
 func _set_animation():
 	var anim = "Idle"
+	$steps.emitting = false
 	
 	if !is_grounded:
 		if velocity.y <= 0:
@@ -65,6 +66,7 @@ func _set_animation():
 		else: anim = "Fall"
 	elif velocity.x != 0:
 		anim = "Run"
+		$steps.emitting = true
 		
 	if hurted:
 		anim = "Hit"
@@ -73,8 +75,10 @@ func _set_animation():
 		$anim.play(anim)
 
 func knockback():
-	velocity.x = -knockback_dir * knockback_force
-	velocity.y = -knockback_force / 4
+	if $raycasts/rigth.is_colliding():
+		velocity.x = -knockback_dir * knockback_force
+	elif $raycasts/left.is_colliding():
+		velocity.x = knockback_dir * knockback_force
 	velocity = move_and_slide(velocity)
 
 func _on_hurtBox_body_entered(body):
