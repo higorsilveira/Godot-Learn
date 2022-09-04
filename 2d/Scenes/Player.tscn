@@ -361,13 +361,13 @@ shape = SubResource( 3 )
 position = Vector2( -9, 10 )
 enabled = true
 cast_to = Vector2( 0, 12 )
-collision_mask = 8
+collision_mask = 88
 
 [node name="RayCast2D2" type="RayCast2D" parent="raycasts"]
 position = Vector2( 10, 10 )
 enabled = true
 cast_to = Vector2( 0, 12 )
-collision_mask = 8
+collision_mask = 88
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -376,9 +376,9 @@ limit_bottom = 200
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-drag_margin_left = 0.4
+drag_margin_left = 0.3
 drag_margin_top = 0.3
-drag_margin_right = 0.4
+drag_margin_right = 0.3
 drag_margin_bottom = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true

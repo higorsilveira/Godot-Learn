@@ -4,24 +4,36 @@ var algarismo = [0,0]
 var index = 0
 var enemy = preload("res://EnemyGroup.tscn")
 var group = [preload("res://EnemyGroup.tscn")]
+var particle = preload("res://particle/Particle.tscn").instance()
+var target = Vector2()
+var vel = Vector2()
 
 func _ready():
 	group.clear()
+	$Player.add_child(particle)
 
 func _process(_delta):
 	$Resultado.text = str(algarismo[0])+str(algarismo[1])
+	
+#func move_particle():
+#	vel = particle.global_position.direction_to(target) * 200
+##	particle.look_at(target)
+#	if particle.global_position.distance_to(target) > 5:
+#		vel = particle.move_and_slide(vel)
+#		target = Vector2()
 
 func _on_Timer_timeout():
 	randomize()
 	var enemies = [enemy]
 	var type = enemies[randi() % enemies.size()]
 	var ene = type.instance()
-	ene.position = Vector2(rand_range(150,250), $Spawn.position.y)
-	add_child(ene)
+	ene.global_position = Vector2(rand_range(-100,150),0)
+	$Spawn.add_child(ene)
 	group.append(ene)
 	for en in group:
 		if en.out_of():
 			group.erase(en)
+	$Timer.wait_time = rand_range(1,3)
 	
 func _on_Send_button_down():
 	print(group)

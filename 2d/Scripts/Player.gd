@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var up = Vector2.UP
 var velocity = Vector2.ZERO
 var move_speed = 480
 var gravity = 1200
@@ -15,11 +16,19 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	velocity.y += gravity * delta	
-	_get_input()
-	velocity = move_and_slide(velocity)
+	velocity.y += gravity * delta
+	velocity.x = 0
+	
+	if !hurted:
+		_get_input()
+	velocity = move_and_slide(velocity, up)
 	is_grounded = _check_is_ground()
 	_set_animation()
+	
+	for plataforms in get_slide_count():
+		var collision = get_slide_collision(plataforms)
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
 
 func _get_input():
 	velocity.x = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Items/Banana.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Items/Pineapple.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Mushroom.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Prefabs/FallingPlataform.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Prefabs/MovingPlataform.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1203,6 +1205,7 @@ centered = false
 [node name="fall-zone" type="Area2D" parent="."]
 position = Vector2( 421, 231 )
 scale = Vector2( 8.46354, 0.67687 )
+collision_layer = 8
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -1236,5 +1239,51 @@ position = Vector2( 61, 100 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 13 )]
 position = Vector2( 299, 47 )
+
+[node name="FallingPlataform" parent="." instance=ExtResource( 14 )]
+position = Vector2( 353, 129 )
+
+[node name="FallingPlataform2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 704, 131 )
+
+[node name="FallingPlataform3" parent="." instance=ExtResource( 14 )]
+position = Vector2( 759, 130 )
+
+[node name="FallingPlataform4" parent="." instance=ExtResource( 14 )]
+position = Vector2( 813, 117 )
+
+[node name="FallingPlataform5" parent="." instance=ExtResource( 14 )]
+position = Vector2( 855, 97 )
+
+[node name="FallingPlataform6" parent="." instance=ExtResource( 14 )]
+position = Vector2( 892, 68 )
+
+[node name="FallingPlataform7" parent="." instance=ExtResource( 14 )]
+position = Vector2( 835, 53 )
+
+[node name="FallingPlataform8" parent="." instance=ExtResource( 14 )]
+position = Vector2( 788, 37 )
+
+[node name="FallingPlataform9" parent="." instance=ExtResource( 14 )]
+position = Vector2( 745, 15 )
+
+[node name="FallingPlataform10" parent="." instance=ExtResource( 14 )]
+position = Vector2( 701, 2 )
+
+[node name="FallingPlataform11" parent="." instance=ExtResource( 14 )]
+position = Vector2( 652, -16 )
+
+[node name="FallingPlataform12" parent="." instance=ExtResource( 14 )]
+position = Vector2( 430, -51 )
+
+[node name="FallingPlataform13" parent="." instance=ExtResource( 14 )]
+position = Vector2( 385, -74 )
+
+[node name="MovingPlataform" parent="." instance=ExtResource( 15 )]
+position = Vector2( 119, -77 )
+
+[node name="MovingPlataform2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 28, 96 )
+horizontal = false
 
 [connection signal="body_entered" from="fall-zone" to="fall-zone" method="_on_fallzone_body_entered"]
