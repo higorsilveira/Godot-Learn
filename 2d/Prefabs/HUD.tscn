@@ -59,7 +59,6 @@ align = 2
 valign = 1
 
 [node name="Timer" type="Timer" parent="HBoxContainer/Timer"]
-wait_time = 0.1
 autostart = true
 
 [node name="Fruit" type="Control" parent="HBoxContainer"]
