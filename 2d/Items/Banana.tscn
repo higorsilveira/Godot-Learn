@@ -138,6 +138,7 @@ tracks/3/keys = {
 }
 
 [node name="Banana" instance=ExtResource( 1 )]
+fruits = 3
 
 [node name="anim" parent="." index="2"]
 anims/Collected = SubResource( 1 )

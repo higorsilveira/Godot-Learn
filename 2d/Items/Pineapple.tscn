@@ -1,20 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Items/Apple.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Items/Fruits/Pineapple.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Items/Fruits/Collected.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Items/Fruits/Apple.png" type="Texture" id=4]
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends Area2D
-
-func _on_items_body_entered(body):
-	$anim.play(\"Collected\")
-
-func _on_anim_animation_finished(anim_name):
-	if anim_name == \"Collected\":
-		queue_free()
-"
 
 [sub_resource type="Animation" id=1]
 resource_name = "Collected"
@@ -149,7 +138,7 @@ tracks/3/keys = {
 }
 
 [node name="Pineapple" instance=ExtResource( 1 )]
-script = SubResource( 4 )
+fruits = 2
 
 [node name="anim" parent="." index="2"]
 anims/Collected = SubResource( 1 )
