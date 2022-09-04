@@ -19,6 +19,8 @@ signal change_life(player_life)
 func _ready():
 	connect("change_life", get_parent().get_node("HUD/HBoxContainer/Life"), "on_change_life")
 	emit_signal("change_life", max_health)
+	position.x = Global.checkpoint_pos
+	position.y = 0
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
@@ -87,3 +89,6 @@ func _on_hurtBox_body_entered(body):
 	if player_health < 1:
 		queue_free()
 		get_tree().reload_current_scene()
+
+func hit_checkpoint():
+	Global.checkpoint_pos = position.x
